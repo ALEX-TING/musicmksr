@@ -12,10 +12,11 @@ import request from 'axios';
 
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 const history = syncHistoryWithStore(browserHistory, store);
+Appcues.anonymous();
 
 render((
   <Provider store={store}>
-    <Router history={browserHistory}>
+    <Router history={browserHistory} onUpdate={()=>window.Appcues.start()>
       <Route path='/' activeClassName="active" component={App}>
         <Route path='/sequencer' activeClassName="active" component={Sequencer}/>
         <Route path='/profile' activeClassName="active" component={Profile}/>
